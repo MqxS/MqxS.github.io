@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
+	"portfolio/src"
 )
 
 type Media struct {
@@ -37,6 +39,7 @@ type SiteData struct {
 	Email      string
 	GitHubURL  string
 	GitHubText string
+	SiteURL    string
 	Projects   []Project
 }
 
@@ -53,6 +56,7 @@ func main() {
 		Email:      "maxgoog06@gmail.com",
 		GitHubURL:  "https://github.com/MqxS",
 		GitHubText: "github.com/MqxS",
+		SiteURL:    "https://mqxs.github.io",
 		Projects: []Project{
 			{
 				Slug:    "motor-controller",
@@ -79,7 +83,7 @@ func main() {
 				Meta:    "C · C++ · Go · Windows · Linux",
 				Paragraphs: []string{
 					"Founded and developed a commercial cheat-detection and diagnostics platform for Minecraft communities. Built low-level systems that analyzed process memory and machine artifacts, then combined those findings into a score for suspected cheating.",
-					"Supported real users across heterogeneous systems, worked through reliability and compatibility issues, maintained backend services, and responded to bad actors attempting to disrupt the platform.",
+					"Supported many users across various systems, worked through reliability and compatibility issues, maintained backend services, and responded to bad actors attempting to disrupt the platform.",
 				},
 				Tags: []string{"Process Memory", "Windows Internals", "Backend Systems", "Security"},
 			},
@@ -129,8 +133,8 @@ func main() {
 				Eyebrow:         "Robotics · Computer Vision",
 				Title:           "Distributed Planetary Analysis Platform",
 				Meta:            "3rd Place · Autonomous Track · RoboTech",
-				Paragraphs:      []string{"Developed software for a humanoid robot and autonomous vehicle using inverse kinematics, fiducial detection, pathfinding, PWM motor/servo control, and obstacle avoidance. The autonomous vehicle ran on a Raspberry Pi and used fiducial tracking to navigate its environment."},
-				Tags:            []string{"Python", "Java", "JavaScript", "Raspberry Pi", "Computer Vision", "Kinematics"},
+				Paragraphs:      []string{"Developed software for a humanoid robot and autonomous vehicle using inverse kinematics, fiducial detection, pathfinding, PWM motor/servo control, and obstacle avoidance. The autonomous vehicle ran on a Jetson and used fiducial tracking to navigate its environment."},
+				Tags:            []string{"Python", "Java", "JavaScript", "Jetson", "Computer Vision", "Kinematics"},
 				SubmissionURL:   "https://devpost.com/software/autonomous-distributed-space-exploration",
 				SubmissionLabel: "View RoboTech submission",
 			},
@@ -168,6 +172,10 @@ func main() {
 	}
 
 	fmt.Printf("Generated homepage + %d project pages in docs/\n", len(data.Projects))
+
+	if err := src.GeneratePDF("docs/index.html", "Portfolio.pdf"); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func render(path string, tmpl *template.Template, data any) error {
