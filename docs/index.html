@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Maxim Iliev — Computer Engineering portfolio focused on embedded systems, robotics, low-level software, and AI." />
+    <title>Maxim Iliev | Engineering Portfolio</title>
+    <style>
+        :root { --bg:#090b0e; --panel:#11151a; --panel2:#161b21; --text:#f4f6f8; --muted:#98a3af; --soft:#cbd2d9; --line:#242b33; --line2:#343d47; --accent:#fff; --max:1120px; }
+        * { box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+        body::before { content:""; position:absolute; inset:0 0 auto; height:620px; pointer-events:none; background:radial-gradient(circle at 75% 20%,rgba(255,255,255,.055),transparent 34%),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; mask-image:linear-gradient(to bottom,#000,transparent 90%); }
+        a { color:inherit; }
+        .wrap { width:min(var(--max),calc(100% - 40px)); margin:0 auto; }
+        nav { position:sticky; top:0; z-index:10; backdrop-filter:blur(14px); background:rgba(9,11,14,.82); border-bottom:1px solid rgba(255,255,255,.07); }
+        nav .wrap { display:flex; justify-content:space-between; align-items:center; min-height:66px; gap:20px; }
+        .brand { font-weight:780; letter-spacing:.025em; text-decoration:none; }
+        .navlinks { display:flex; gap:22px; flex-wrap:wrap; }
+        .navlinks a { color:var(--muted); text-decoration:none; font-size:.92rem; }
+        .navlinks a:hover { color:var(--text); }
+
+        header { position:relative; padding:118px 0 92px; border-bottom:1px solid var(--line); }
+        .hero { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(270px,.5fr); gap:70px; align-items:end; }
+        .eyebrow { text-transform:uppercase; letter-spacing:.16em; font-size:.76rem; color:var(--muted); font-weight:750; }
+        h1 { font-size:clamp(3.7rem,8vw,7rem); line-height:.94; margin:18px 0 28px; letter-spacing:-.06em; max-width:780px; }
+        .hero-copy { color:#b6c0ca; max-width:720px; font-size:1.16rem; margin:0 0 32px; }
+        .actions { display:flex; gap:12px; flex-wrap:wrap; }
+        .button { display:inline-flex; align-items:center; justify-content:center; min-height:44px; text-decoration:none; padding:10px 16px; border:1px solid var(--line2); border-radius:9px; font-weight:700; transition:transform .15s ease,border-color .15s ease,background .15s ease; }
+        .button.primary { background:var(--accent); color:#0b0d10; border-color:var(--accent); }
+        .button:hover { transform:translateY(-1px); border-color:#687482; }
+        .hero-side { border-left:1px solid var(--line); padding-left:26px; }
+        .hero-side p { color:var(--muted); font-size:.84rem; margin:0 0 12px; text-transform:uppercase; letter-spacing:.12em; font-weight:750; }
+        .focus-list { display:grid; gap:0; }
+        .focus-list span { padding:11px 0; border-top:1px solid var(--line); color:#d9dee4; font-size:.96rem; }
+
+        section { padding:82px 0; border-bottom:1px solid var(--line); }
+        .section-head { display:flex; justify-content:space-between; gap:28px; align-items:end; margin-bottom:32px; }
+        .section-head h2 { margin:0; }
+        .section-head p { max-width:460px; color:var(--muted); margin:0; font-size:.96rem; }
+        h2 { font-size:2.15rem; letter-spacing:-.04em; }
+        .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
+        .card { position:relative; grid-column:span 6; display:flex; flex-direction:column; min-width:0; overflow:hidden; background:linear-gradient(145deg,var(--panel),#0e1216); border:1px solid var(--line); border-radius:15px; padding:26px; transition:transform .18s ease,border-color .18s ease,background .18s ease; }
+        .card.feature { grid-column:span 12; min-height:340px; padding:32px; }
+        .card.feature::after { content:"FOC"; position:absolute; right:-12px; bottom:-56px; font-size:12rem; line-height:1; font-weight:850; letter-spacing:-.08em; color:rgba(255,255,255,.025); pointer-events:none; }
+        .card:hover { transform:translateY(-3px); border-color:#46515d; background:var(--panel2); }
+        .card-index { position:absolute; top:24px; right:24px; color:#65717e; font-size:.78rem; font-variant-numeric:tabular-nums; letter-spacing:.08em; }
+        .card h3 { margin:8px 38px 9px 0; font-size:1.42rem; letter-spacing:-.025em; }
+        .card.feature h3 { font-size:2rem; max-width:660px; }
+        .card-title { text-decoration:none; }
+        .card-title::after { content:""; position:absolute; inset:0; z-index:1; }
+        .meta { color:var(--muted); font-size:.9rem; margin-bottom:15px; }
+        .card p { color:#cbd2d9; max-width:780px; }
+        .card p + p { margin-top:0; }
+        .tags { display:flex; gap:7px; flex-wrap:wrap; margin-top:18px; position:relative; z-index:2; }
+        .tag { border:1px solid var(--line); background:rgba(255,255,255,.018); border-radius:999px; padding:5px 9px; font-size:.78rem; color:var(--muted); }
+        .card-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; padding-top:24px; position:relative; z-index:2; }
+        .card-actions a { text-decoration:none; font-size:.88rem; font-weight:750; border:1px solid var(--line2); border-radius:8px; padding:8px 11px; background:rgba(0,0,0,.12); }
+        .card-actions a:hover { border-color:#66727f; background:#1a2027; }
+
+        .approach { display:grid; grid-template-columns:.85fr 1.15fr; gap:54px; align-items:start; }
+        .approach-intro p { color:var(--muted); max-width:360px; }
+        .approach-list { border-top:1px solid var(--line); }
+        .approach-row { display:grid; grid-template-columns:42px 180px 1fr; gap:18px; padding:24px 0; border-bottom:1px solid var(--line); }
+        .approach-row .num { color:#65717e; font-size:.8rem; padding-top:4px; }
+        .approach-row h3 { margin:0; font-size:1.15rem; }
+        .approach-row p { color:var(--muted); margin:0; }
+
+        .skills { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+        .skillbox { border-top:1px solid var(--line2); padding:22px 2px 0; }
+        .skillbox h3 { margin:0 0 8px; font-size:1.05rem; }
+        .skillbox p { color:var(--muted); margin:0; }
+        footer { padding:52px 0 76px; color:var(--muted); }
+        footer .wrap { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+        footer strong { color:var(--text); }
+
+        @media(max-width:800px) {
+            .hero { grid-template-columns:1fr; gap:45px; }
+            .hero-side { border-left:0; border-top:1px solid var(--line); padding:22px 0 0; }
+            .card,.card.feature{grid-column:span 12}
+            .skills{grid-template-columns:1fr}
+            .section-head{display:block}.section-head p{margin-top:10px}
+            .approach{grid-template-columns:1fr;gap:25px}
+            .approach-row{grid-template-columns:34px 1fr}.approach-row p{grid-column:2}
+            nav .wrap{align-items:flex-start;padding:14px 0}.navlinks{justify-content:flex-end}
+            header{padding-top:78px}.card.feature::after{font-size:7rem}
+        }
+    </style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="#top">Maxim Iliev</a><div class="navlinks"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="mailto:maxgoog06@gmail.com">Contact</a></div></div></nav>
+<header id="top"><div class="wrap hero"><div><div class="eyebrow">Computer Engineering · University of Georgia</div><h1>I like building things.</h1><p class="hero-copy">Computer Engineering student focused on embedded systems, motor control, robotics, low-level software, and AI. I enjoy taking unfamiliar technical problems apart, understanding how they work, and building complete hardware/software systems.</p><div class="actions"><a class="button primary" href="https://github.com/MqxS" target="_blank" rel="noreferrer">View GitHub</a><a class="button" href="mailto:maxgoog06@gmail.com">Email Me</a></div></div><aside class="hero-side"><p>What I work on</p><div class="focus-list"><span>Embedded systems</span><span>Robotics & autonomy</span><span>Low-level software</span><span>Hardware + software integration</span></div></aside></div></header>
+<section id="projects"><div class="wrap"><div class="section-head"><h2>Selected Projects</h2><p>Projects where I learned something new, solved a problem, or built something cool.</p></div><div class="grid"><article class="card feature"><span class="card-index">01</span><div class="eyebrow">Embedded Systems · Power Electronics · Controls</div><h3><a class="card-title" href="motor-controller/">Custom Three-Phase FOC Motor Controller</a></h3><div class="meta">STM32 · C · KiCad · SPI · USB-C · SVPWM · Oscilloscope</div><p>Designed and built a brushless motor controller from scratch after starting with little background in motor theory, PCB design, or field-oriented control. The board uses an STM32 microcontroller and TI gate driver, supports an optional external encoder over SPI, and communicates over USB-C.</p><p>Developed the firmware in C, experimented with conventional PWM and SVPWM, explored interpolation techniques for a low-resolution internal Hall encoder, verified PWM timing and deadtime with an oscilloscope, and tuned the controller through iterative hardware testing.</p><div class="tags"><span class="tag">FOC</span><span class="tag">Motor Control</span><span class="tag">Firmware</span><span class="tag">PCB Design</span><span class="tag">Hardware Debugging</span><span class="tag">Control Systems</span></div><div class="card-actions"><a href="motor-controller/">View project →</a></div></article><article class="card"><span class="card-index">02</span><div class="eyebrow">Systems Software · Security</div><h3><a class="card-title" href="soltix/">Soltix.cc</a></h3><div class="meta">C · C&#43;&#43; · Go · Windows · Linux</div><p>Founded and developed a commercial cheat-detection and diagnostics platform for Minecraft communities. Built low-level systems that analyzed process memory and machine artifacts, then combined those findings into a score for suspected cheating.</p><p>Supported real users across heterogeneous systems, worked through reliability and compatibility issues, maintained backend services, and responded to bad actors attempting to disrupt the platform.</p><div class="tags"><span class="tag">Process Memory</span><span class="tag">Windows Internals</span><span class="tag">Backend Systems</span><span class="tag">Security</span></div><div class="card-actions"><a href="soltix/">View project →</a></div></article><article class="card"><span class="card-index">03</span><div class="eyebrow">Robotics · Autonomy</div><h3><a class="card-title" href="frc-1683/">FRC Team 1683</a></h3><div class="meta">Programming Lead · 2 Years</div><p>Spent four years on FRC Team 1683 and served as programming lead for two. Wrote the majority of robot software and supporting vision systems, taught newer students, and developed autonomous and path-following solutions including A*-based approaches.</p><p>Also worked extensively across electrical, fabrication, CAD/CAM, and CNC machining, giving me experience integrating software with real mechanical and electrical systems. The team qualified for the FIRST Championship every year I participated.</p><div class="tags"><span class="tag">Autonomous Systems</span><span class="tag">Computer Vision</span><span class="tag">Path Planning</span><span class="tag">Swerve</span><span class="tag">CAD/CAM</span></div><div class="card-actions"><a href="frc-1683/">View project →</a></div></article><article class="card"><span class="card-index">04</span><div class="eyebrow">AI · Embedded Integration</div><h3><a class="card-title" href="sortify/">Sortify</a></h3><div class="meta">Google Gemini Track Winner · MakeMITxHarvard</div><p>Designed, built, and programmed a vision-based waste sorting system. The system used AI to classify waste and a compact differential mechanism to redirect items into the correct section of the bin.</p><div class="tags"><span class="tag">Gemini API</span><span class="tag">Raspberry Pi</span><span class="tag">Arduino</span><span class="tag">Computer Vision</span><span class="tag">C&#43;&#43;</span><span class="tag">Python</span></div><div class="card-actions"><a href="sortify/">View project →</a><a href="https://devpost.com/software/sortify-kemb3i" target="_blank" rel="noreferrer">Devpost ↗</a></div></article><article class="card"><span class="card-index">05</span><div class="eyebrow">AI · Backend Systems</div><h3><a class="card-title" href="docdoctor/">DocDoctor</a></h3><div class="meta">MongoDB Track Winner · Google Track Honorable Mention · AI-ATL</div><p>Built DocDoctor to help customer-support agents find documents more quickly. On the backend, the project used Cobweb, a semantic document-search system, along with Go, Python, JavaScript, Gemini, and MongoDB.</p><div class="tags"><span class="tag">Go</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Gemini</span><span class="tag">MongoDB</span><span class="tag">Semantic Search</span></div><div class="card-actions"><a href="docdoctor/">View project →</a><a href="https://devpost.com/software/docdoctor" target="_blank" rel="noreferrer">Devpost ↗</a></div></article><article class="card"><span class="card-index">06</span><div class="eyebrow">AI · Education</div><h3><a class="card-title" href="sophi/">Sophi</a></h3><div class="meta">NexHacks · Carnegie Mellon</div><p>Built an AI learning tool that generates instructor-style questions from course material and gives targeted hints to help students practice problem solving with material tailored to their class.</p><div class="tags"><span class="tag">AI</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Google Gemini</span><span class="tag">Education</span></div><div class="card-actions"><a href="sophi/">View project →</a><a href="https://devpost.com/software/sophia-c3qw4b" target="_blank" rel="noreferrer">Devpost ↗</a></div></article><article class="card"><span class="card-index">07</span><div class="eyebrow">Robotics · Computer Vision</div><h3><a class="card-title" href="planetary-analysis/">Distributed Planetary Analysis Platform</a></h3><div class="meta">3rd Place · Autonomous Track · RoboTech</div><p>Developed software for a humanoid robot and autonomous vehicle using inverse kinematics, fiducial detection, pathfinding, PWM motor/servo control, and obstacle avoidance. The autonomous vehicle ran on a Raspberry Pi and used fiducial tracking to navigate its environment.</p><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">JavaScript</span><span class="tag">Raspberry Pi</span><span class="tag">Computer Vision</span><span class="tag">Kinematics</span></div><div class="card-actions"><a href="planetary-analysis/">View project →</a><a href="https://devpost.com/software/autonomous-distributed-space-exploration" target="_blank" rel="noreferrer">Devpost ↗</a></div></article></div></div></section>
+<section id="experience"><div class="wrap approach"><div class="approach-intro"><div class="eyebrow">How I work</div><h2>Engineering Approach</h2><p>I tend to learn by building, testing, breaking things, and understanding why they broke. I like getting far enough into a problem that I understand the details instead of only making it work.</p></div><div class="approach-list"><div class="approach-row"><span class="num">01</span><h3>Learn</h3><p>I am most motivated by problems where I do not already know the answer. Most of my best projects started with something I had to teach myself.</p></div><div class="approach-row"><span class="num">02</span><h3>Build systems</h3><p>I solve problems across firmware, electronics, software, and mechanical systems instead of treating those areas as isolated pieces.</p></div><div class="approach-row"><span class="num">03</span><h3>Iterate</h3><p>I prefer getting something real working, testing it, and improving it based on what I learn from the hardware or software itself.</p></div></div></div></section>
+<section id="skills"><div class="wrap"><div class="section-head"><h2>Technical Focus</h2><p>The tools change from project to project. These are the areas I keep coming back to.</p></div><div class="skills"><div class="skillbox"><h3>Software</h3><p>C, C++, Go, Python, Java, JavaScript, APIs, Linux, Windows systems development, Git</p></div><div class="skillbox"><h3>Embedded</h3><p>STM32, microcontrollers, SPI, USB, motor control, FOC, PWM/SVPWM, hardware/software integration</p></div><div class="skillbox"><h3>Engineering</h3><p>KiCad, PCB design, oscilloscopes, CAD/CAM, CNC machining, computer vision, autonomous systems</p></div></div></div></section>
+<footer><div class="wrap"><div><strong>Maxim Iliev</strong><br />University of Georgia · Computer Engineering</div><div><a href="mailto:maxgoog06@gmail.com">maxgoog06@gmail.com</a> · <a href="https://github.com/MqxS" target="_blank" rel="noreferrer">github.com/MqxS</a></div></div></footer>
+</body>
+</html>
