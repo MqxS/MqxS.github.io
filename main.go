@@ -33,14 +33,15 @@ type Project struct {
 }
 
 type SiteData struct {
-	Name       string
-	University string
-	Major      string
-	Email      string
-	GitHubURL  string
-	GitHubText string
-	SiteURL    string
-	Projects   []Project
+	Name        string
+	University  string
+	Major       string
+	Email       string
+	GitHubURL   string
+	GitHubText  string
+	LinkedInURL string
+	SiteURL     string
+	Projects    []Project
 }
 
 type ProjectPageData struct {
@@ -50,24 +51,25 @@ type ProjectPageData struct {
 
 func main() {
 	data := SiteData{
-		Name:       "Maxim Iliev",
-		University: "University of Georgia",
-		Major:      "Computer Engineering",
-		Email:      "maxgoog06@gmail.com",
-		GitHubURL:  "https://github.com/MqxS",
-		GitHubText: "github.com/MqxS",
-		SiteURL:    "https://mqxs.github.io",
+		Name:        "Maxim Iliev",
+		University:  "University of Georgia",
+		Major:       "Computer Engineering",
+		Email:       "maxgoog06@gmail.com",
+		GitHubURL:   "https://github.com/MqxS",
+		GitHubText:  "github.com/MqxS",
+		LinkedInURL: "https://www.linkedin.com/in/maxim-iliev/",
+		SiteURL:     "https://mqxs.github.io",
 		Projects: []Project{
 			{
 				Slug:    "motor-controller",
-				Eyebrow: "Embedded Systems · Power Electronics · Controls",
-				Title:   "Custom Three-Phase FOC Motor Controller",
-				Meta:    "STM32 · C · KiCad · SPI · USB-C · SVPWM · Oscilloscope",
+				Eyebrow: "Embedded Systems · Motor Control",
+				Title:   "Brushless Motor Controller",
+				Meta:    "C · STM32 · KiCad · SPI",
 				Paragraphs: []string{
-					"Designed and built a brushless motor controller from scratch after starting with little background in motor theory, PCB design, or field-oriented control. The board uses an STM32 microcontroller and TI gate driver, supports an optional external encoder over SPI, and communicates over USB-C.",
-					"Developed the firmware in C, experimented with conventional PWM and SVPWM, explored interpolation techniques for a low-resolution internal Hall encoder, verified PWM timing and deadtime with an oscilloscope, and tuned the controller through iterative hardware testing.",
+					"Designed a three-phase motor controller PCB in KiCad and wrote C firmware for PWM, SVPWM, and field-oriented control. The board has USB-C connectivity and supports an optional high-resolution SPI absolute encoder.",
+					"Verified PWM timing and deadtime with an oscilloscope, then debugged gate-drive and motor-control behavior on the assembled board.",
 				},
-				Tags:    []string{"FOC", "Motor Control", "Firmware", "PCB Design", "Hardware Debugging", "Control Systems"},
+				Tags:    []string{"Firmware", "PCB Design", "FOC", "SVPWM", "Hardware Debugging"},
 				Feature: true,
 				RepoURL: "https://github.com/MqxS/Motor-Controller",
 				Media: []Media{
@@ -80,41 +82,51 @@ func main() {
 				Slug:    "soltix",
 				Eyebrow: "Systems Software · Security",
 				Title:   "Soltix.cc",
-				Meta:    "C · C++ · Go · Windows · Linux",
+				Meta:    "Founder · Four-year independent venture",
 				Paragraphs: []string{
-					"Founded and developed a commercial cheat-detection and diagnostics platform for Minecraft communities. Built low-level systems that analyzed process memory and machine artifacts, then combined those findings into a score for suspected cheating.",
-					"Supported many users across various systems, worked through reliability and compatibility issues, maintained backend services, and responded to bad actors attempting to disrupt the platform.",
+					"Founded a commercial cheat-detection service that analyzed Windows process memory and system artifacts. It reached more than 300 users and 37 customers.",
+					"Built a Windows driver in C/C++ and process-analysis tools in Go, and administered Linux systems for customer deployments.",
 				},
-				Tags: []string{"Process Memory", "Windows Internals", "Backend Systems", "Security"},
+				Tags: []string{"Windows Driver", "Process Memory", "C/C++", "Go", "Linux"},
 			},
 			{
 				Slug:    "frc-1683",
 				Eyebrow: "Robotics · Autonomy",
 				Title:   "FRC Team 1683",
-				Meta:    "Programming Lead · 2 Years",
+				Meta:    "Programming Lead · 2 Years · Team Member · 4 Years",
 				Paragraphs: []string{
-					"Spent four years on FRC Team 1683 and served as programming lead for two. Wrote the majority of robot software and supporting vision systems, taught newer students, and developed autonomous and path-following solutions including A*-based approaches.",
-					"Also worked extensively across electrical, fabrication, CAD/CAM, and CNC machining, giving me experience integrating software with real mechanical and electrical systems. The team qualified for the FIRST Championship every year I participated.",
+					"Led programming for two of my four years on the team, developing autonomous and computer-vision software for competition robots. The 85-student team reached the FIRST World Championship in both years I served as lead.",
+					"Also contributed to robot design, electrical systems, fabrication, and CNC machining.",
 				},
-				Tags: []string{"Autonomous Systems", "Computer Vision", "Path Planning", "Swerve", "CAD/CAM"},
+				Tags: []string{"Robot Software", "Autonomous Systems", "Computer Vision", "Electrical Systems", "CNC"},
+			},
+			{
+				Slug:            "sidequests",
+				Eyebrow:         "Backend Development · HackGT 13",
+				Title:           "SideQuests",
+				Meta:            "MongoDB Prize · 1st Place, NSA HEARSAY",
+				Paragraphs:      []string{"Built the Go backend and server infrastructure for a MongoDB-backed app that combines time- and location-aware activity plans with shared outings, interest matching, and group chat."},
+				Tags:            []string{"Go", "MongoDB", "Backend Development", "Server Infrastructure"},
+				SubmissionURL:   "https://devpost.com/software/sidequestz",
+				SubmissionLabel: "View HackGT submission",
 			},
 			{
 				Slug:            "sortify",
-				Eyebrow:         "AI · Embedded Integration",
+				Eyebrow:         "Computer Vision · Mechanism Design",
 				Title:           "Sortify",
-				Meta:            "Google Gemini Track Winner · MakeMITxHarvard",
-				Paragraphs:      []string{"Designed, built, and programmed a vision-based waste sorting system. The system used AI to classify waste and a compact differential mechanism to redirect items into the correct section of the bin."},
-				Tags:            []string{"Gemini API", "Raspberry Pi", "Arduino", "Computer Vision", "C++", "Python"},
+				Meta:            "Google Gemini Track Winner · MakeMIT x Harvard",
+				Paragraphs:      []string{"Developed computer-vision software to classify waste and pass the results to sorting controls. Designed a compact differential mechanism to route each item to the correct bin."},
+				Tags:            []string{"Computer Vision", "Sorting Controls", "Mechanism Design"},
 				SubmissionURL:   "https://devpost.com/software/sortify-kemb3i",
 				SubmissionLabel: "View MakeMITxHarvard submission",
 			},
 			{
 				Slug:            "docdoctor",
-				Eyebrow:         "AI · Backend Systems",
+				Eyebrow:         "Backend Development · Document Search",
 				Title:           "DocDoctor",
-				Meta:            "MongoDB Track Winner · Google Track Honorable Mention · AI-ATL",
-				Paragraphs:      []string{"Built DocDoctor to help customer-support agents find documents more quickly. On the backend, the project used Cobweb, a semantic document-search system, along with Go, Python, JavaScript, Gemini, and MongoDB."},
-				Tags:            []string{"Go", "Python", "JavaScript", "Gemini", "MongoDB", "Semantic Search"},
+				Meta:            "MongoDB Track Winner · Google Cloud Honorable Mention · AI ATL",
+				Paragraphs:      []string{"Built a Go backend and WebSocket pipeline for live support-call transcripts and agent annotations. Added MongoDB persistence and document-search APIs so agents could retrieve relevant material during calls."},
+				Tags:            []string{"Go", "WebSockets", "MongoDB", "Document Search", "APIs"},
 				SubmissionURL:   "https://devpost.com/software/docdoctor",
 				SubmissionLabel: "View AI-ATL submission",
 			},
@@ -124,7 +136,7 @@ func main() {
 				Title:           "Sophi",
 				Meta:            "NexHacks · Carnegie Mellon",
 				Paragraphs:      []string{"Built an AI learning tool that generates instructor-style questions from course material and gives targeted hints to help students practice problem solving with material tailored to their class."},
-				Tags:            []string{"AI", "Python", "JavaScript", "Google Gemini", "Education"},
+				Tags:            []string{"AI", "Learning Tools", "Education"},
 				SubmissionURL:   "https://devpost.com/software/sophia-c3qw4b",
 				SubmissionLabel: "View NexHacks submission",
 			},
@@ -134,7 +146,7 @@ func main() {
 				Title:           "Distributed Planetary Analysis Platform",
 				Meta:            "3rd Place · Autonomous Track · RoboTech",
 				Paragraphs:      []string{"Developed software for a humanoid robot and autonomous vehicle using inverse kinematics, fiducial detection, pathfinding, PWM motor/servo control, and obstacle avoidance. The autonomous vehicle ran on a Jetson and used fiducial tracking to navigate its environment."},
-				Tags:            []string{"Python", "Java", "JavaScript", "Jetson", "Computer Vision", "Kinematics"},
+				Tags:            []string{"Jetson", "Computer Vision", "Inverse Kinematics", "Pathfinding"},
 				SubmissionURL:   "https://devpost.com/software/autonomous-distributed-space-exploration",
 				SubmissionLabel: "View RoboTech submission",
 			},

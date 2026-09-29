@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="{{.Name}} — Computer Engineering portfolio focused on embedded systems, robotics, low-level software, and AI." />
+    <meta name="description" content="{{.Name}} — University of Georgia computer engineering student working in embedded systems, robotics, research, and systems software." />
     <title>{{.Name}} | Engineering Portfolio</title>
     <base href="{{.SiteURL}}/" />
     <style>
@@ -65,6 +65,7 @@
         .approach-row .num { color:#65717e; font-size:.8rem; padding-top:4px; }
         .approach-row h3 { margin:0; font-size:1.15rem; }
         .approach-row p { color:var(--muted); margin:0; }
+        .approach-row strong { color:var(--soft); font-weight:700; }
 
         .skills { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
         .skillbox { border-top:1px solid var(--line2); padding:22px 2px 0; }
@@ -267,8 +268,8 @@
                 padding-top:0;
             }
             .approach {
-                grid-template-columns:1fr 1.55fr;
-                gap:0.34in;
+                grid-template-columns:1fr;
+                gap:0.15in;
             }
             .approach-intro p {
                 color:#555f68;
@@ -278,7 +279,7 @@
             }
             .approach-list { border-top:1px solid var(--line2); }
             .approach-row {
-                grid-template-columns:0.25in 1.18in 1fr;
+                grid-template-columns:0.25in 1.35in 1fr;
                 gap:0.10in;
                 padding:0.12in 0;
                 border-bottom:1px solid #dfe3e6;
@@ -286,7 +287,7 @@
             }
             .approach-row .num { font-size:6.7pt; color:#858e97; }
             .approach-row h3 { font-size:9.4pt; }
-            .approach-row p { color:#555f68; font-size:8.2pt; line-height:1.4; }
+            .approach-row p { grid-column:auto; color:#555f68; font-size:8.2pt; line-height:1.4; }
 
             #skills { padding-top:0.26in; }
             .skills { gap:0.18in; }
@@ -315,10 +316,10 @@
 </head>
 <body>
 <nav><div class="wrap"><a class="brand" href="#top">{{.Name}}</a><div class="navlinks"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="mailto:{{.Email}}">Contact</a></div></div></nav>
-<header id="top"><div class="wrap hero"><div><div class="eyebrow">{{.Major}} · {{.University}}</div><h1>I like building things.</h1><p class="hero-copy">Computer Engineering student focused on embedded systems, motor control, robotics, low-level software, and AI. I enjoy taking unfamiliar technical problems apart, understanding how they work, and building complete hardware/software systems.</p><div class="actions"><a class="button primary" href="{{.GitHubURL}}" target="_blank" rel="noreferrer">View GitHub</a><a class="button" href="mailto:{{.Email}}">Email Me</a></div></div><aside class="hero-side"><p>What I work on</p><div class="focus-list"><span>Embedded systems</span><span>Robotics & autonomy</span><span>Low-level software</span><span>Hardware + software integration</span></div></aside></div></header>
-<section id="projects"><div class="wrap"><div class="section-head"><h2>Selected Projects</h2><p>Projects where I learned something new, solved a problem, or built something cool.</p></div><div class="grid">{{range $i, $p := .Projects}}<article class="card{{if .Feature}} feature{{end}}"><span class="card-index">0{{add $i 1}}</span><div class="eyebrow">{{.Eyebrow}}</div><h3><a class="card-title" href="{{.Slug}}/">{{.Title}}</a></h3><div class="meta">{{.Meta}}</div>{{range .Paragraphs}}<p>{{.}}</p>{{end}}<div class="tags">{{range .Tags}}<span class="tag">{{.}}</span>{{end}}</div><div class="card-actions"><a href="{{.Slug}}/">View project →</a>{{if .SubmissionURL}}<a href="{{.SubmissionURL}}" target="_blank" rel="noreferrer">Devpost ↗</a>{{end}}</div></article>{{end}}</div></div></section>
-<section id="experience"><div class="wrap approach"><div class="approach-intro"><div class="eyebrow">How I work</div><h2>Engineering Approach</h2><p>I tend to learn by building, testing, breaking things, and understanding why they broke. I like getting far enough into a problem that I understand the details instead of only making it work.</p></div><div class="approach-list"><div class="approach-row"><span class="num">01</span><h3>Learn</h3><p>I am most motivated by problems where I do not already know the answer. Most of my best projects started with something I had to teach myself.</p></div><div class="approach-row"><span class="num">02</span><h3>Build systems</h3><p>I solve problems across firmware, electronics, software, and mechanical systems instead of treating those areas as isolated pieces.</p></div><div class="approach-row"><span class="num">03</span><h3>Iterate</h3><p>I prefer getting something real working, testing it, and improving it based on what I learn from the hardware or software itself.</p></div></div></div></section>
-<section id="skills"><div class="wrap"><div class="section-head"><h2>Technical Focus</h2><p>The tools change from project to project. These are the areas I keep coming back to.</p></div><div class="skills"><div class="skillbox"><h3>Software</h3><p>C, C++, Go, Python, Java, JavaScript, APIs, Linux, Windows systems development, Git</p></div><div class="skillbox"><h3>Embedded</h3><p>STM32, microcontrollers, SPI, USB, motor control, FOC, PWM/SVPWM, hardware/software integration</p></div><div class="skillbox"><h3>Engineering</h3><p>KiCad, PCB design, oscilloscopes, CAD/CAM, CNC machining, computer vision, autonomous systems</p></div></div></div></section>
-<footer><div class="wrap"><div><strong>{{.Name}}</strong><br />{{.University}} · {{.Major}}</div><div><a href="mailto:{{.Email}}">{{.Email}}</a> · <a href="{{.GitHubURL}}" target="_blank" rel="noreferrer">{{.GitHubText}}</a> · <a href="{{.SiteURL}}">mqxs.github.io</a></div></div></footer>
+<header id="top"><div class="wrap hero"><div><div class="eyebrow">{{.Major}} · {{.University}} · Expected May 2028</div><h1>I like building things.</h1><p class="hero-copy">I'm a computer engineering student and undergraduate researcher at the University of Georgia. My work spans embedded hardware, robotics, and systems software, from a motor controller PCB and firmware to Windows driver and backend development.</p><div class="actions"><a class="button primary" href="{{.GitHubURL}}" target="_blank" rel="noreferrer">View GitHub</a><a class="button" href="{{.LinkedInURL}}" target="_blank" rel="noreferrer">LinkedIn</a><a class="button" href="mailto:{{.Email}}">Email Me</a></div></div><aside class="hero-side"><p>Current focus</p><div class="focus-list"><span>SERS lab research</span><span>Embedded systems</span><span>Systems programming</span><span>Robotics & autonomy</span></div></aside></div></header>
+<section id="projects"><div class="wrap"><div class="section-head"><h2>Selected Projects</h2><p>Embedded hardware, backend systems, robotics, and computer vision.</p></div><div class="grid">{{range $i, $p := .Projects}}<article class="card{{if .Feature}} feature{{end}}"><span class="card-index">0{{add $i 1}}</span><div class="eyebrow">{{.Eyebrow}}</div><h3><a class="card-title" href="{{.Slug}}/">{{.Title}}</a></h3><div class="meta">{{.Meta}}</div>{{range .Paragraphs}}<p>{{.}}</p>{{end}}<div class="tags">{{range .Tags}}<span class="tag">{{.}}</span>{{end}}</div><div class="card-actions"><a href="{{.Slug}}/">View project →</a>{{if .SubmissionURL}}<a href="{{.SubmissionURL}}" target="_blank" rel="noreferrer">Devpost ↗</a>{{end}}</div></article>{{end}}</div></div></section>
+<section id="experience"><div class="wrap approach"><div class="approach-intro"><div class="eyebrow">Research & work</div><h2>Experience</h2><p>B.S. in Computer Engineering at the University of Georgia, expected May 2028. GPA: 3.9/4.0.</p></div><div class="approach-list"><div class="approach-row"><span class="num">01</span><h3>UGA SERS Lab</h3><p><strong>Undergraduate Researcher · Sep 2026–Present.</strong> Designed the scanner architecture and modeled the mechanical system in Onshape for an automated Raman/SERS platform. Selected electronics, corrected wiring faults, and contributed to fabrication and scanner software.</p></div><div class="approach-row"><span class="num">02</span><h3>Soltix.cc</h3><p><strong>Founder · Four-year independent venture.</strong> Built commercial Windows process-analysis software, including a C/C++ driver and Go tools, and managed Linux deployments for 37 customers.</p></div><div class="approach-row"><span class="num">03</span><h3>FRC Team 1683</h3><p><strong>Programming Lead · Two years.</strong> Led autonomous and computer-vision development on an 85-student team that reached the FIRST World Championship in both years I served as lead.</p></div></div></div></section>
+<section id="skills"><div class="wrap"><div class="section-head"><h2>Technical Skills</h2><p>Tools and disciplines used in my research, projects, and engineering work.</p></div><div class="skills"><div class="skillbox"><h3>Languages</h3><p>C, C++, Go, Python, Java, JavaScript</p></div><div class="skillbox"><h3>Engineering</h3><p>Embedded systems, firmware, PCB design, electronics, robotics, CAD/CAM, Onshape</p></div><div class="skillbox"><h3>Software & systems</h3><p>Windows driver development, computer vision, backend development, WebSockets, MongoDB, Linux</p></div></div></div></section>
+<footer><div class="wrap"><div><strong>{{.Name}}</strong><br />{{.University}} · B.S. Computer Engineering · Expected May 2028</div><div><a href="mailto:{{.Email}}">{{.Email}}</a> · <a href="{{.GitHubURL}}" target="_blank" rel="noreferrer">{{.GitHubText}}</a> · <a href="{{.LinkedInURL}}" target="_blank" rel="noreferrer">LinkedIn</a></div></div></footer>
 </body>
 </html>
