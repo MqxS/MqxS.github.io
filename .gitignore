@@ -1,0 +1,4 @@
+# Build output and generated link preview images.
+/dist/
+/static/assets/social/
+/docs/static/assets/social/
